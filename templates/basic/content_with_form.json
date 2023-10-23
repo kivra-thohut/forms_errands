@@ -1,0 +1,10 @@
+{
+    "subject": FILL_THIS_IN,
+    "type": "other",
+    "template": "pdf_viewer",
+    "security_level": 25,
+    "form": {
+      "id": FILL_THIS_IN,
+      "days_to_expiry": FILL_THIS_IN
+    }
+  }

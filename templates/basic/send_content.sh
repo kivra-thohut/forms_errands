@@ -1,0 +1,1 @@
+~/p/kivra_cli/bin/kivra-content post -t 16853693069494e9d83b45448a9ec273d6a3c777ed --api "https://sender.api.kivra.com" --ssn $1 --content ~/p/kivra_cli/errands/sender_demo/content_with_form.json --api-version v2 --file ~/p/kivra_cli/errands/sender_demo/Kivra-meeting-room.pdf
