@@ -1,0 +1,7 @@
+{
+  "subject": "Simple form",
+  "type": "other",
+  "template": "pdf_viewer",
+  "security_level": 25,
+  "form": { "id": "db868961-ae17-447c-97e1-947324f45020", "days_to_expiry": 30 }
+}

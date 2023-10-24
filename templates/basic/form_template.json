@@ -1,0 +1,12 @@
+{
+    "title": "test",
+    "description": "test",
+    "start_question": "test",
+    "questions": [
+        {
+            "label": "test",
+            "id": "test",
+            "type": "number" 
+        }
+    ]
+}
