@@ -12,10 +12,10 @@ This will clone kivra_cli.
 
 ```
 make new ERRAND=salesdemo 
-cd errands/salesdemo
+cd errands/salesdemo 
 ```
 
-This creates a new errand called salesdemo using the default template `basic`. 
+This creates a new errand called salesdemo using the default template `basic`. Note that you need to be in this directory when running the scripts.
 
 This will create the directory `errands/salesdemo` along with everything you need to create a form template and send it out. Here is an overview of the files.
 
