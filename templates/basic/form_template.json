@@ -1,11 +1,11 @@
 {
-    "title": "test",
-    "description": "test",
-    "start_question": "test",
+    "title": "Question",
+    "description": "Question",
+    "start_question": "question",
     "questions": [
         {
-            "label": "test",
-            "id": "test",
+            "label": "Question",
+            "id": "question",
             "type": "number" 
         }
     ]
