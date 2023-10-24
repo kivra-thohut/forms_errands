@@ -34,6 +34,11 @@ Note this is generated once `create_form_template.sh` is called.
 
 ## errands/salesdemo/send_content.sh
 
-This sends out a content with form to the user. It takes a SSN as the first parameter e.g. `send_content.sh XXXXXXXXXX`.
-Note this runs in production so be tripple sure the SSN is correct before running this.
+This sends out a content with form to the user. 
+Move the PDF you wish to include to this directory and name it content.pdf.
 
+When running this it takes an SSN as the first parameter e.g. `send_content.sh XXXXXXXXXX`.
+
+**Note this runs in production so be tripple sure the SSN is correct before running this.**
+
+**If you are unsure about the form then send it to yourself first and check it before sending to others.**
