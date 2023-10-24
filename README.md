@@ -1,4 +1,4 @@
-The goal is forms_errands is to provide a way to keep track of forms errands in production. An errand could be sending a form to sales to demo to a customer, sending to internal users at Kivra or perhaps just doing experimental testing.
+The goal for forms_errands is to provide a way to keep track of forms errands in production. An errand could be sending a form to sales to demo to a customer, sending to internal users at Kivra or perhaps just doing experimental testing.
 
 # Quick Start
 
