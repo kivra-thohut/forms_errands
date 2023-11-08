@@ -1,0 +1,35 @@
+{
+    "title": "Forms Demo",
+    "description": "This Form is to showcase what forms can do",
+    "start_question": "q1",
+    "questions": [
+        {
+            "type": "options",
+            "label": "Will you be attending the Christmas party?",
+            "id": "q1",
+            "options": [
+                {
+                    "id": "yes",
+                    "label": "Yes",
+                    "next_question": "q2"
+                },
+                {
+                    "id": "no",
+                    "label": "No"
+                }
+            ]
+        },
+        {
+            "label": "How many people are you bringing with you?",
+            "id": "q2",
+            "type": "number",
+            "next_question": "q3"
+        },
+        {
+            "label": "Write any dietary preferences you have?",
+            "help_text": "Alergies, foods you don't like etc",
+            "id": "q3",
+            "type": "number"
+        }
+    ]
+}
