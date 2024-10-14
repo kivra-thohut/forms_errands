@@ -34,15 +34,17 @@ for key in $keys; do
                                                            --response-key "$key")
 
     # you can modify this to put your own custom processing here
-    form_response_key=$(echo $response | jq '.form_response_key') 
+    # below is an example
+    
+    # form_response_key=$(echo $response | jq '.form_response_key') 
 
-    participate_id=$(echo $response | jq '.response[1].id') 
-    participate_value=$(echo $response | jq '.response[1].value') 
-    participate_id_value=${participate_id}-${participate_value}
+    # participate_id=$(echo $response | jq '.response[1].id') 
+    # participate_value=$(echo $response | jq '.response[1].value') 
+    # participate_id_value=${participate_id}-${participate_value}
 
-    allergies_id=$(echo $response | jq '.response[0].id') 
-    allergies_value=$(echo $response | jq '.response[0].value') 
-    allergies_id_value=${allergies_id}-${allergies_value}
+    # allergies_id=$(echo $response | jq '.response[0].id') 
+    # allergies_value=$(echo $response | jq '.response[0].value') 
+    # allergies_id_value=${allergies_id}-${allergies_value}
 
     echo "$form_response_key,$participate_id_value,$allergies_id_value" >> $processed_response
 
