@@ -1,14 +1,15 @@
 #!/bin/bash
 set -e -o pipefail
 
-export CLIENT_ID=""
-export CLIENT_SECRET=""
-TENANT_KEY=""
-FORM_TEMPLATE_KEY=""
+export CLIENT_ID={CLIENT_ID}
+export CLIENT_SECRET={CLIENT_SECRET}
+TENANT_KEY={TENANT_KEY}
+FORM_TEMPLATE_KEY={FORM_TEMPLATE_KEY}
+API={API}
 
-access_token=$(../../kivra_cli/bin/kivra-access-token --api https://sender.api.kivra.com)
+access_token=$(../../kivra_cli/bin/kivra-access-token --api $API)
 
-keys=$(../../kivra_cli/bin/kivra-form list-responses --api https://sender.api.kivra.com \
+keys=$(../../kivra_cli/bin/kivra-form list-responses --api $API \
                                               --token $access_token \
                                               --tenant $TENANT_KEY \
                                               --form-template-key $FORM_TEMPLATE_KEY \
