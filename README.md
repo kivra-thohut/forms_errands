@@ -1,4 +1,13 @@
+# About
+
 The goal for forms_errands is to provide a way to keep track of forms errands in production. An errand could be sending a form to sales to demo to a customer, sending to internal users at Kivra or perhaps just doing experimental testing.
+
+Implementation wise it is essentially a wrapper around Kivra CLI.
+
+# Prerequisites
+
+- Make sure you have `make` installed.
+- Ensure you have `jq` installed for JSON processing.
 
 # Quick Start
 
@@ -11,33 +20,22 @@ make init
 This will clone kivra_cli. 
 
 ```
-make new ERRAND=salesdemo 
+make new ERRAND=salesdemo \
+         CLIENT_ID= 
+         CLIENT_SECRET= 
+         API= 
+         TENANT_KEY=
 cd errands/salesdemo 
 ```
 
-This creates a new errand called salesdemo using the default template `basic`. Note that you need to be in this directory when running the scripts.
+This creates a new errand called salesdemo using the default template `basic`. 
 
-This will create the directory `errands/salesdemo` along with everything you need to create a form template and send it out. Here is an overview of the files.
+`errands/salesdemo` contains various scripts for creating form templates, sending content with a form and collecting the responses. Below are the scripts with a description of what they do.
 
-## errands/salesdemo/create_form_template.sh
+* `create_form_template.sh` - This creates the form template using form_template.json
+* `send_content_to_many.sh` - Sends the content to the users in the `ssn.csv` file. Be sure to configure `content_with_form.json` and place a `content.pdf` file in this directory.
+* `collect_responses.sh` - Downloads all the responses. Insert custom processing logic in this script. A file called ` raw_forms_response.json` is created. This can be used by another script (e.g. Python) to process the response or for troubleshooting.
 
-This will create a form template using form_template.json.
-
-## errands/salesdemo/form_template.json
-
-This is the form template. Be sure to fill this out.
-
-## errands/salesdemo/content_with_form.json
-
-This is the content file. Be sure to add to it what you need.
-Note this is generated once `create_form_template.sh` is called.
-
-## errands/salesdemo/send_content.sh
-
-This sends out a content with form to the user. 
-Move the PDF you wish to include to this directory and name it content.pdf.
-
-When running this it takes an SSN as the first parameter e.g. `send_content.sh XXXXXXXXXX`.
 
 **Note this runs in production so be tripple sure the SSN is correct before running this.**
 
