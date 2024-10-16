@@ -1,6 +1,17 @@
 #!/bin/bash
 set -e -o pipefail
 
+function get_id_value_pair {
+    local response_json=$1
+    local index=$2
+
+    local id=$(echo $response_json | jq ".response[$index].id")
+    local value=$(echo $response_json | jq ".response[$index].value")
+    local id_value=${id}-${value}
+
+    echo $id_value
+}
+
 export CLIENT_ID={CLIENT_ID}
 export CLIENT_SECRET={CLIENT_SECRET}
 TENANT_KEY={TENANT_KEY}
@@ -28,26 +39,20 @@ rm -rf $raw_forms_response
 # for each form_response_key lookup the coresponding form response and then process it
 for key in $keys; do
     echo "processing form_response_key: $key"
-    response=$(../../kivra_cli/bin/kivra-form get-response --api "https://sender.api.kivra.com" \
+    response=$(../../kivra_cli/bin/kivra-form get-response --api $API \
                                                            --token $access_token \
                                                            --tenant $TENANT_KEY \
                                                            --form-template-key $FORM_TEMPLATE_KEY \
                                                            --response-key "$key")
 
     # you can modify this to put your own custom processing here
-    # below is an example
-    
-    # form_response_key=$(echo $response | jq '.form_response_key') 
+    # consider a python script if you need to do more complex processing
+    form_response_key=$(echo $response | jq '.form_response_key')
+    first_answer=$(get_id_value_pair "$response" 0)
+    second_answer=$(get_id_value_pair "$response" 1)
+    third_answer=$(get_id_value_pair "$response" 2)
 
-    # participate_id=$(echo $response | jq '.response[1].id') 
-    # participate_value=$(echo $response | jq '.response[1].value') 
-    # participate_id_value=${participate_id}-${participate_value}
-
-    # allergies_id=$(echo $response | jq '.response[0].id') 
-    # allergies_value=$(echo $response | jq '.response[0].value') 
-    # allergies_id_value=${allergies_id}-${allergies_value}
-
-    echo "$form_response_key,$participate_id_value,$allergies_id_value" >> $processed_response
+    echo "$form_response_key,$first_answer,$second_answer,$third_answer" >> $processed_response
 
     echo $response >> raw_forms_response.json
 done
