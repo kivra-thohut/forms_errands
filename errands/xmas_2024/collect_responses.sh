@@ -44,12 +44,12 @@ for key in $keys; do
 
     # you can modify this to put your own custom processing here
     # consider a python script if you need to do more complex processing
-    form_response_key=$(echo $response | jq '.form_response_key') 
+    matched_by=$(echo $response | jq '.matched_by.value'') 
     first_answer=$(get_id_value_pair "$response" 0)
     second_answer=$(get_id_value_pair "$response" 1)
     third_answer=$(get_id_value_pair "$response" 2)
 
-    echo "$form_response_key,$first_answer,$second_answer,$third_answer" >> $processed_response
+    echo "$matched_by,$first_answer,$second_answer,$third_answer" >> $processed_response
 
     echo $response >> raw_forms_response.json
 done
